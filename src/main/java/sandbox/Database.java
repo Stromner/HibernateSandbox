@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import sandbox.dao.UTf8Variable;
 import sandbox.dao.VariableInfo;
 
 import javax.persistence.EntityManager;
@@ -16,15 +17,23 @@ public class Database {
     EntityManager entityManager;
 
     @Transactional
-    public void addRow(String name) {
-        VariableInfo variableInfo = new VariableInfo();
-        variableInfo.setVariableName(name);
-        entityManager.persist(variableInfo);
+    public void addStringRow(String name, String dataContent) {
+        VariableInfo base = new VariableInfo();
+        base.setVariableName(name);
+
+        UTf8Variable sBase = new UTf8Variable();
+        sBase.setDataContent(dataContent);
+        sBase.setVariableInfo(base);
+
+        entityManager.persist(base);
+        entityManager.persist(sBase);
         entityManager.flush();
     }
 
-    public void showEntry(Long entryId) {
+    public void showStringEntry(Long entryId) {
         VariableInfo entry = entityManager.find(VariableInfo.class, entryId);
+        UTf8Variable sEntry = entityManager.find(UTf8Variable.class, entryId);
         log.info("Entity={}", entry.toString());
+        log.info("String description={}", sEntry.toString());
     }
 }

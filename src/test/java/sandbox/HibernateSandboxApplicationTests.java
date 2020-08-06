@@ -18,12 +18,13 @@ class HibernateSandboxApplicationTests {
 
     @Test
     public void testDb() {
-        database.addRow("TestData");
-        database.addRow("TestData");
-        database.addRow("TestData");
-        database.addRow("TestData");
+        database.addStringRow("TestData1", "Description1");
+        database.addStringRow("TestData2", "Description2");
+        database.addStringRow("TestData3", "Description3");
 
-        database.showEntry(1L);
+        database.showStringEntry(1L);
+        database.showStringEntry(2L);
+        database.showStringEntry(3L);
     }
 
 }
