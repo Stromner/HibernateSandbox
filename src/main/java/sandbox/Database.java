@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import sandbox.dao.Types;
 import sandbox.dao.UTf8Variable;
 import sandbox.dao.VariableInfo;
 
@@ -20,6 +21,7 @@ public class Database {
     public void addStringRow(String name, String dataContent) {
         VariableInfo base = new VariableInfo();
         base.setVariableName(name);
+        base.setType(Types.STRING);
 
         UTf8Variable sBase = new UTf8Variable();
         sBase.setDataContent(dataContent);
