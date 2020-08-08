@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Entity
-public abstract class BaseEntry<E> {
+public abstract class BaseEntry {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
@@ -16,10 +16,6 @@ public abstract class BaseEntry<E> {
     public Long getId() {
         return id;
     }
-
-    public abstract E getDataContent();
-
-    public abstract void setDataContent(E dataContent);
 
     @Override
     public String toString() {

@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class EntryB extends BaseEntry<byte[]> {
+public class EntryB extends BaseEntry {
     @Column(nullable = false, length = 255)
     private byte[] dataContent;
 

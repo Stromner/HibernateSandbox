@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class EntryA extends BaseEntry<String> {
+public class EntryA extends BaseEntry {
     @Column(nullable = false, length = 255)
     private String dataContent;
 
